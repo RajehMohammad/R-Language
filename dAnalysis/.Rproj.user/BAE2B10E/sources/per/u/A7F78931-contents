@@ -1,0 +1,20 @@
+#Import Files And needed Packages 
+source('utils1.R')
+library(tidyverse)
+
+
+#  Import Data from CSV File using utils File 
+df <- importData('learning.csv')
+
+ddf5 <- df %>%
+  select(decimalLatitude, 
+         decimalLongitude, 
+         weight, 
+         length, 
+         sex, 
+         latDMS, 
+         lonDMS, 
+         textLatDD) %>%
+  group_by_all() %>%
+  summarize(count = n())
+View(ddf5) 
